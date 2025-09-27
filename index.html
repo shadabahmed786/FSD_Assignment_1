@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product Gallery — Bootstrap Fixed</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Hide all products by default */
+    .product-card { display: none; }
+
+    /* Filtering logic */
+    #showall:checked ~ .container .product-card { display: block; }
+    #electronics:checked ~ .container .product-card { display: none; }
+    #electronics:checked ~ .container .product-card[data-category="electronics"] { display: block; }
+    #clothing:checked ~ .container .product-card { display: none; }
+    #clothing:checked ~ .container .product-card[data-category="clothing"] { display: block; }
+    #books:checked ~ .container .product-card { display: none; }
+    #books:checked ~ .container .product-card[data-category="books"] { display: block; }
+
+    /* Hide global radios (used only for CSS logic) */
+    #showall, #electronics, #clothing, #books { display: none; }
+  </style>
+</head>
+<body class="bg-light">
+
+  <input type="radio" name="filter" id="showall" checked>
+  <input type="radio" name="filter" id="electronics">
+  <input type="radio" name="filter" id="clothing">
+  <input type="radio" name="filter" id="books">
+
+  <header class="bg-primary text-white py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="h4 m-0">Store By Shadab</div>
+      <nav class="d-flex align-items-center gap-3">
+        <a class="text-white text-decoration-none" href="#">Home</a>
+        <a class="text-white text-decoration-none" href="#">Products</a>
+        <a class="text-white text-decoration-none" href="#">Contact</a>
+        <input class="form-control form-control-sm w-auto" type="search" placeholder="Search...">
+      </nav>
+    </div>
+  </header>
+
+  <div class="container my-4">
+    <div class="row">
+      <aside class="col-md-3 mb-4">
+        <div class="card p-3">
+          <h5 class="text-primary">Filters</h5>
+          <div class="form-check mt-2">
+            <label class="form-check-label" for="showall">
+              <input class="form-check-input" type="radio" name="dummy" onclick="document.getElementById('showall').checked = true"> Show All
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label" for="electronics">
+              <input class="form-check-input" type="radio" name="dummy" onclick="document.getElementById('electronics').checked = true"> Electronics
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label" for="clothing">
+              <input class="form-check-input" type="radio" name="dummy" onclick="document.getElementById('clothing').checked = true"> Clothing
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label" for="books">
+              <input class="form-check-input" type="radio" name="dummy" onclick="document.getElementById('books').checked = true"> Books
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <div class="col-md-9">
+        <h3 class="mb-4">Products</h3>
+        <div class="row row-cols-1 row-cols-md-3 g-4 products-grid">
+          <div class="col product-card" data-category="electronics">
+            <div class="card h-100 text-center">
+              <img src="Assest/Mobile.png" class="card-img-top" alt="Smartphone">
+              <div class="card-body">
+                <h5 class="card-title">Smartphone</h5>
+                <p class="text-primary fw-bold">$299</p>
+                <button class="btn btn-primary btn-sm">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="col product-card" data-category="electronics">
+            <div class="card h-100 text-center">
+              <img src="Assest/laptop.png" class="card-img-top" alt="Laptop">
+              <div class="card-body">
+                <h5 class="card-title">Laptop</h5>
+                <p class="text-primary fw-bold">$899</p>
+                <button class="btn btn-primary btn-sm">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col product-card" data-category="clothing">
+            <div class="card h-100 text-center">
+              <img src="Assest/t-shirts.png" class="card-img-top" alt="T-shirt">
+              <div class="card-body">
+                <h5 class="card-title">T-shirt</h5>
+                <p class="text-primary fw-bold">$19</p>
+                <button class="btn btn-primary btn-sm">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col product-card" data-category="books">
+            <div class="card h-100 text-center">
+              <img src="Assest/books.png" class="card-img-top" alt="Book">
+              <div class="card-body">
+                <h5 class="card-title">Book</h5>
+                <p class="text-primary fw-bold">$12</p>
+                <button class="btn btn-primary btn-sm">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
